@@ -4,7 +4,7 @@ contract CampaignFactory{
 
     address[] private deployedCampaign;
 
-    function CampaignFactory(uint minimum) public {
+    function createCampaign(uint minimum) public {
         address campaignAddress = new Campaign(minimum,msg.sender);
         deployedCampaign.push(campaignAddress);
     }
