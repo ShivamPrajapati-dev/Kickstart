@@ -1,8 +1,11 @@
 import React from 'react';
+import Layout from '../../components/Layout';
 class CampaignIndex extends React.Component {
   render() {
     return (
-      <h3>Campaign</h3>
+      <Layout>
+        <h3>Campaign</h3>
+      </Layout>
     );
   }
 }
