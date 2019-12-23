@@ -23,7 +23,7 @@ class CampaignNew extends React.Component{
       from:accounts[0]
     });
     this.setState({successMesssage:'Transaction success!!'});
-    Router.push('/');
+    Router.pushRoute('/');
   } catch(err) {
     this.setState({errorMessage:err.message});
   }
