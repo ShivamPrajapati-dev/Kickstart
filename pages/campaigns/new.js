@@ -3,12 +3,14 @@ import Layout from '../../components/Layout';
 import {Form, Button, Input, Message} from 'semantic-ui-react';
 import web3 from '../../ethereum/web3';
 import factory from '../../ethereum/factory';
+import {Router} from '../../routes';
 
 class CampaignNew extends React.Component{
 
   state = {
     minimumContribution:'',
     errorMessage:'',
+    successMesssage:'',
     loading:false
   };
 
@@ -20,6 +22,8 @@ class CampaignNew extends React.Component{
       await factory.methods.createCampaign(this.state.minimumContribution).send({
       from:accounts[0]
     });
+    this.setState({successMesssage:'Transaction success!!'});
+    Router.push('/');
   } catch(err) {
     this.setState({errorMessage:err.message});
   }
@@ -30,7 +34,7 @@ class CampaignNew extends React.Component{
     return (
       <Layout>
         <h3>New Campaign</h3>
-        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} success = {!!this.state.successMesssage}>
             <Form.Field>
               <label>Minimum contribution</label>
               <Input
@@ -47,6 +51,11 @@ class CampaignNew extends React.Component{
               <Message.Header>Oops!</Message.Header>
               <p>{this.state.errorMessage}</p>
             </Message>
+            <Message
+              success
+              header='Transaction successful'
+              content='Minimum contribution for this campaign is set.'
+              />
             <Button loading={this.state.loading} type='submit' primary>Submit</Button>
           </Form>
 
