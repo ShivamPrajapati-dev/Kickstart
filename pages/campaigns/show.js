@@ -35,6 +35,26 @@ renderCard() {
      meta:'address of manager',
      description:'This campaign is a test campaign',
      style:{ overflowWrap:'break-word'}
+   },
+   {
+     header:minimumContribution,
+     meta:'minimum contribution (wei)',
+     description:'You must contribute atleast this much to become an approver'
+   },
+   {
+     header:approversCount,
+     meta:'Number of approvers',
+     description:'Total number of people entered into campaign'
+   },
+   {
+     header:requestsCount,
+     meta:'Number of requests',
+     description:'Total number of request to spend money'
+   },
+   {
+     header:balance,
+     meta:'contract balance',
+     description:'Total balance of the campaign'
    }
  ];
 
