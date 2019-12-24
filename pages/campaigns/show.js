@@ -3,8 +3,9 @@ import Layout from '../../components/Layout';
 import web3 from '../../ethereum/web3'
 import compiledCampaign from '../../ethereum/build/Campaign.json';
 import Campaign from '../../ethereum/campaign';
-import {Card, Grid} from 'semantic-ui-react';
+import {Card, Grid, Button} from 'semantic-ui-react';
 import ContributeForm from '../../components/contributeForm';
+import {Link} from '../../routes';
 
 class CampaignIndex extends React.Component {
 
@@ -73,6 +74,11 @@ return  <Card.Group items={items} />;
         <Grid>
           <Grid.Column width ={10}>
             {this.renderCard()}
+            <Link route= {`/campaigns/${this.props.address}/requests`}>
+              <a>
+              <Button primary>View requests</Button>
+              </a>
+          </Link>
           </Grid.Column>
           <Grid.Column width ={6}>
             <ContributeForm address={this.props.address}/>
