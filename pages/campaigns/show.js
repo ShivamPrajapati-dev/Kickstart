@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import web3 from '../../ethereum/web3'
 import compiledCampaign from '../../ethereum/build/Campaign.json';
 import Campaign from '../../ethereum/campaign';
-import {Card} from 'semantic-ui-react';
+import {Card, Grid} from 'semantic-ui-react';
 import ContributeForm from '../../components/contributeForm';
 
 class CampaignIndex extends React.Component {
@@ -55,7 +55,7 @@ renderCard() {
    },
    {
      header:web3.utils.fromWei(balance,'ether'),
-     meta:'contract balance',
+     meta:'Campaign balance(ether)',
      description:'Total balance of the campaign'
    }
  ];
@@ -69,8 +69,15 @@ return  <Card.Group items={items} />;
     return (
       <Layout>
         <h3>Campaign</h3>
-        {this.renderCard()}
-        <ContributeForm />
+        <Grid>
+          <Grid.Column width ={10}>
+            {this.renderCard()}
+          </Grid.Column>
+          <Grid.Column width ={6}>
+            <ContributeForm />
+          </Grid.Column>
+        </Grid>
+
       </Layout>
     );
   }
