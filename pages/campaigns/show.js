@@ -13,10 +13,11 @@ class CampaignIndex extends React.Component {
     const campaignInstance =Campaign(address);
     const summary = await campaignInstance.methods.getSummary().call();
     return {
+      address:address,
       minimumContribution:summary[0],
-      balance:summary[0],
-      approversCount:summary[1],
-      requestsCount:summary[2],
+      balance:summary[1],
+      approversCount:summary[2],
+      requestsCount:summary[3],
       manager:summary[4]
     };
   }
@@ -74,7 +75,7 @@ return  <Card.Group items={items} />;
             {this.renderCard()}
           </Grid.Column>
           <Grid.Column width ={6}>
-            <ContributeForm />
+            <ContributeForm address={this.props.address}/>
           </Grid.Column>
         </Grid>
 
