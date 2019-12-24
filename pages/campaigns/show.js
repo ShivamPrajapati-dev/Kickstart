@@ -4,6 +4,8 @@ import web3 from '../../ethereum/web3'
 import compiledCampaign from '../../ethereum/build/Campaign.json';
 import Campaign from '../../ethereum/campaign';
 import {Card} from 'semantic-ui-react';
+import ContributeForm from '../../components/contributeForm';
+
 class CampaignIndex extends React.Component {
 
   static async getInitialProps(props) {
@@ -52,7 +54,7 @@ renderCard() {
      description:'Total number of request to spend money'
    },
    {
-     header:balance,
+     header:web3.utils.fromWei(balance,'ether'),
      meta:'contract balance',
      description:'Total balance of the campaign'
    }
@@ -68,6 +70,7 @@ return  <Card.Group items={items} />;
       <Layout>
         <h3>Campaign</h3>
         {this.renderCard()}
+        <ContributeForm />
       </Layout>
     );
   }
