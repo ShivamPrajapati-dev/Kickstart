@@ -1,10 +1,23 @@
 import React from 'react';
+import Layout from '../../../components/Layout';
+import {Link} from '../../../routes';
+import {Button} from 'semantic-ui-react';
 
 class RequestIndex extends React.Component {
 
+  static async getInitialProps(props){
+    const {address}=props.query;
+    return {address};
+  }
   render(){
     return (
-      <h3>Hi!</h3>
+      <Layout>
+        <Link route={`/campaigns/${this.props.address}/requests/new`}>
+          <a>
+            <Button primary>Add request</Button>
+          </a>
+        </Link>
+      </Layout>
     );
   }
 
