@@ -59,6 +59,7 @@ class RequestIndex extends React.Component {
            {this.renderRows()}
           </Body>
         </Table>
+        Found {this.props.requestsCount} requests
       </Layout>
     );
   }

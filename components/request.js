@@ -22,16 +22,20 @@ class RequestRow extends React.Component {
 
   render() {
     const {Row, Cell} =Table;
-    const {description,recipient,value,approvalsCount,approvals}=this.props.request;
+    const {description,recipient,value,approvalsCount,approvals, complete}=this.props.request;
     return (
-    <Row>
+    <Row disabled={complete}>
       <Cell>{this.props.id+1}</Cell>
       <Cell>{description}</Cell>
       <Cell>{web3.utils.fromWei(value,'ether')}</Cell>
       <Cell>{recipient}</Cell>
       <Cell>{approvalsCount}/{this.props.approversCount}</Cell>
-      <Cell><Button color='green' basic onClick={this.onApprove}>Approve</Button></Cell>
-      <Cell><Button color='teal' basic onClick={this.onFinalize}>Finalize</Button></Cell>
+      <Cell>{complete?null:(
+        <Button color='green' basic onClick={this.onApprove}>Approve</Button>
+      )}</Cell>
+    <Cell>{complete? null :(
+        <Button color='teal' basic onClick={this.onFinalize}>Finalize</Button>
+      )}</Cell>
     </Row>
     );
   }
