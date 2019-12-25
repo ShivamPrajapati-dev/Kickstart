@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
 import {Link} from '../../../routes';
-import {Button} from 'semantic-ui-react';
+import {Button, Table} from 'semantic-ui-react';
 import Campaign from '../../../ethereum/campaign';
 
 class RequestIndex extends React.Component {
@@ -19,6 +19,7 @@ class RequestIndex extends React.Component {
     return {address, requests, requestsCount};
   }
   render(){
+    const {Header, HeaderCell, Row, Body}=Table;
     return (
       <Layout>
         <Link route={`/campaigns/${this.props.address}/requests/new`}>
@@ -26,6 +27,17 @@ class RequestIndex extends React.Component {
             <Button primary>Add request</Button>
           </a>
         </Link>
+        <Table>
+          <Header>
+            <HeaderCell>ID</HeaderCell>
+            <HeaderCell>Description</HeaderCell>
+            <HeaderCell>Amount</HeaderCell>
+            <HeaderCell>Recipient</HeaderCell>
+            <HeaderCell>Approval Count</HeaderCell>
+            <HeaderCell>Approvers</HeaderCell>
+            <HeaderCell>Finalize</HeaderCell>
+          </Header>
+        </Table>
       </Layout>
     );
   }
